@@ -25,22 +25,32 @@ public class BallMovement : MonoBehaviour
 
     void Update()
     {
-        if (Mathf.Abs(transform.position.y) >= YLimit)
+        if (GameBehavior.Instance.State == Utilities.GameplayState.play)
         {
-            transform.position += new Vector3(
-                transform.position.x,                       //X
-                Mathf.Sign(transform.position.y) *YLimit,   //Y
-                transform.position.z                        //Z
+            if (Mathf.Abs(transform.position.y) >= YLimit)
+            {
+                transform.position += new Vector3(
+                    transform.position.x,                       //X
+                    Mathf.Sign(transform.position.y) *YLimit,   //Y
+                    transform.position.z                        //Z
                 
-            );
-            _xDir *= -1;
-        }
+                );
+                _xDir *= -1;
+            }
 
-        if (Mathf.Abs(transform.position.y) >= YLimit)
-        {
-            ResetBall();
+            if (Mathf.Abs(transform.position.y) >= YLimit)
+            {
+            
+                ResetBall();
+            
+                GameBehavior.Instance.LossPoint();
+                
+             
+                    
+            }
+            transform.position += new Vector3(_speed * _xDir, _speed * _yDir, 0) * Time.deltaTime;
         }
-        transform.position += new Vector3(_speed * _xDir, _speed * _yDir, 0) * Time.deltaTime;
+        
     }
 
     void ResetBall()

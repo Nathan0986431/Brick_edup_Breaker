@@ -15,18 +15,22 @@ public class NewMonoBehaviourScript1 : MonoBehaviour
 
     void Update()
     {
-        float movement = 0f;
-
-        if (Input.GetKey(LeftdDirection) && transform.position.x > -Xlimit)
+        if (GameBehavior.Instance.State == Utilities.GameplayState.play)
         {
-            movement -= Speed;
-        }
+            float movement = 0f;
 
-        if (Input.GetKey(RightdDirection) && transform.position.x < Xlimit)
-        {
-            movement += Speed;
+            if (Input.GetKey(LeftdDirection) && transform.position.x > -Xlimit)
+            {
+                movement -= Speed;
+            }
+
+            if (Input.GetKey(RightdDirection) && transform.position.x < Xlimit)
+            {
+                movement += Speed;
+            }
+            transform.position += new Vector3(movement, 0, 0) * Time.deltaTime;
         }
-        transform.position += new Vector3(movement, 0, 0) * Time.deltaTime;
+        
         
     }
 }
