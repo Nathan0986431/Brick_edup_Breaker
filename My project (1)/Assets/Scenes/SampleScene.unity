@@ -1448,8 +1448,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b7ca14b6b91b49e991f691c92fa597f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  State: 0
+  _pauseMessage: {fileID: 0}
   InitBallSpeed: 5
   BallSpeedIncrement: 1.1
+  Players:
+  - {fileID: 0}
+  _lossscore: 0
 --- !u!1 &1469119790
 GameObject:
   m_ObjectHideFlags: 0
