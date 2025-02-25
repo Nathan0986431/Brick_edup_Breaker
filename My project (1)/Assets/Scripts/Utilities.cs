@@ -4,8 +4,8 @@ public static class Utilities
 {
     public enum GameplayState
     {
-        play, 
-        pause,
+        Play, 
+        Pause,
     }
 }
  

@@ -3,23 +3,20 @@ using TMPro;
 public class Player : MonoBehaviour
 {
     // private int _score = 0;
-    private int _lives = 3;
-    
-    // Lives get
-     public int Lives
+     private int _lifes;
+     public int Lifes
      {
          //Shorthand get => _score;
-         get
-         {
-             return _lives;
-         }
+         get => _lifes;
+         
          set
          {
-             _lives = value;
+             _lifes = value;
+             _lifesUI.text = _lifes.ToString();
          }
-         [SerializeField] private TextMeshProUGUI _livesUI;
+         
      }
-    
+     [SerializeField] private TextMeshProUGUI _lifesUI;
     //Score get
     // public int Score
     // {
@@ -37,14 +34,14 @@ public class Player : MonoBehaviour
     //     
     //     [SerializeField] private TextmeshProUGUI _scoreUI;
     }
-    void Start()
-    {
-        
-    }
-
-
-    void Update()
-    {
-        
-    }
-}
+//     void Start()
+//     {
+//         
+//     }
+//
+//
+//     void Update()
+//     {
+//         
+//     }
+// }

@@ -25,7 +25,7 @@ public class BallMovement : MonoBehaviour
 
     void Update()
     {
-        if (GameBehavior.Instance.State == Utilities.GameplayState.play)
+        if (GameBehavior.Instance.State == Utilities.GameplayState.Play)
         {
             if (Mathf.Abs(transform.position.y) >= YLimit)
             {
@@ -42,8 +42,9 @@ public class BallMovement : MonoBehaviour
             {
             
                 ResetBall();
+                _source.Play();
             
-                GameBehavior.Instance.LossPoint();
+                GameBehavior.Instance.LossPoint(transform.position.y > 0 ? 1 : 2);
                 
              
                     

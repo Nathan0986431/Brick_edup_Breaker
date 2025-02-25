@@ -13,7 +13,7 @@ public class GameBehavior : MonoBehaviour
 
     public Player[] Players = new Player[1];
 
-    [SerializeField] private int _losscore = 0;
+    [SerializeField] private int _lossscore = 0;
     void Awake()
     {
         // singleton pattern
@@ -34,25 +34,50 @@ public class GameBehavior : MonoBehaviour
 
     private void Start()
     {
+
+        State = Utilities.GameplayState.Play;
+        _pauseMessage.enabled = false;
+        
         foreach (Player p in Players)
         {
-            p.Lives = 3;
+            p.Lifes = 3;
         }
-            
+        ResetGame();  
     }
-
-    public void LossPoint (players[])
-    {
-        Players[].Lives--;
-        
-    }
-    void Update()
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            State = State == Utilities.GameplayState.play
-                ? Utilities.GameplayState.pause
-                : Utilities.GameplayState.play;
+            State = State == Utilities.GameplayState.Play
+                ? Utilities.GameplayState.Pause
+                : Utilities.GameplayState.Play;
+            
+            _pauseMessage.enabled = !_pauseMessage.enabled;
+        }
+    }
+
+    public void LossPoint (int playerNumber)
+    {
+        Players[playerNumber - 1].Lifes--;
+        CheckLoser();
+    }
+
+    private void CheckLoser()
+    {
+        foreach (Player p in Players)
+        {
+            if (p.Lifes <= _lossscore)
+            {
+                ResetGame();
+            }
+        }
+    }
+
+    private void ResetGame()
+    {
+        foreach (Player p in Players)
+        {
+            p.Lifes = 0;
         }
     }
 }

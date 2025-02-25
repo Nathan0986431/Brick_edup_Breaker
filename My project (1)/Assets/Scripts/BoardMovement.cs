@@ -15,7 +15,7 @@ public class NewMonoBehaviourScript1 : MonoBehaviour
 
     void Update()
     {
-        if (GameBehavior.Instance.State == Utilities.GameplayState.play)
+        if (GameBehavior.Instance.State == Utilities.GameplayState.Play)
         {
             float movement = 0f;
 
