@@ -42,11 +42,11 @@ public class BallMovement : MonoBehaviour
             {
             
                 ResetBall();
-                _source.Play();
+               
             
                 GameBehavior.Instance.LossPoint(transform.position.y > 0 ? 1 : 2);
                 
-             
+                _source.Play();
                     
             }
             transform.position += new Vector3(_speed * _xDir, _speed * _yDir, 0) * Time.deltaTime;

@@ -3,7 +3,7 @@ using TMPro;
 public class Player : MonoBehaviour
 {
     // private int _score = 0;
-     private int _lifes;
+     private int _lifes= 3;
      public int Lifes
      {
          //Shorthand get => _score;
