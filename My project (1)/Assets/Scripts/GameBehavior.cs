@@ -37,12 +37,7 @@ public class GameBehavior : MonoBehaviour
 
         State = Utilities.GameplayState.Play;
         _pauseMessage.enabled = false;
-        
-        foreach (Player p in Players)
-        {
-            p.Lifes = 3;
-        }
-        ResetGame();  
+     
     }
     private void Update()
     {
@@ -77,7 +72,8 @@ public class GameBehavior : MonoBehaviour
     {
         foreach (Player p in Players)
         {
-            p.Lifes = 0;
+            p.Lifes = 3;
         }
+   
     }
 }
