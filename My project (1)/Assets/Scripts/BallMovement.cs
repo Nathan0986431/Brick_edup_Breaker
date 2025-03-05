@@ -11,7 +11,7 @@ public class BallMovement : MonoBehaviour
 
     private AudioSource _source;
     [SerializeField] private AudioClip _wallHit;
-    [SerializeField] private AudioClip _BrickHit;
+    [SerializeField] private AudioClip _brickHit;
     [SerializeField] private AudioClip _boardHit;
     [SerializeField] private AudioClip _lose;
 
@@ -44,7 +44,7 @@ public class BallMovement : MonoBehaviour
                 ResetBall();
                
             
-                GameBehavior.Instance.LossPoint(transform.position.y > 0 ? 1 : 2);
+                // GameBehavior.Instance.LossPoint(transform.position.y > 0 ? 1 : 2);
                 
                 _source.Play();
                     
@@ -68,16 +68,26 @@ public class BallMovement : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Boards"))
         {
-            _source.clip = _boardHit;
+            _source.clip = _boardHit; 
+            _source.Play();
             _yDir *= -1;
             _speed *= GameBehavior.Instance.BallSpeedIncrement;
             
+        }
+        if (other .gameObject.CompareTag("Bricks"))
+        {
+            _source.clip = _brickHit;
+            _source.Play();
+            _yDir *= -1;
+            Destroy(other.gameObject);
         }
 
         if (other.gameObject.CompareTag("Wall"))
         {
             _source.clip = _wallHit;
+            _source.Play();
             _xDir *= -1;
         }
+     
     }
 }

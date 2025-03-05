@@ -61,7 +61,7 @@ public class GameBehavior : MonoBehaviour
     {
         foreach (Player p in Players)
         {
-            if (p.Lifes <= _lossscore)
+            if ((p.Lifes = _lossscore) != 0)
             {
                 ResetGame();
             }
